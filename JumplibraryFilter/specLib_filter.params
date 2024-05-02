@@ -1,0 +1,48 @@
+[specLib]
+
+
+######## --- SPECTRAL LIBRARY SEARCHING --- #####
+exp_mzxml = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/mzXML/FTLD_Batch2_F50.mzXML
+
+#use a txt file with all search results complete path to perform filtering. one path per row without header 
+
+search_result_file = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/10_fractions/search_list.txt 
+
+#filtering mode: mode = 1 is combining all search results in the search_list.txt file and performing one filter. These results will be stored as sum_. mode = 0 is filtering each fraction separately. These results will be inside the search folder
+
+mode = 1
+
+#filter result output folder
+outputFolder = All_Level_filteringFDR_psmsFDR_5_bin2000
+
+####### --- TARGET/DECOY and FILTERING --- ####
+#select FDR at psms level 10%,15%,20% etc
+initial_FDR = 5
+
+#user defined FDR for cutoff at psms level
+FDR = 0.1
+
+#User defined Filter method 0 = Rapid (default JDscore), 1 = Advanced filter (deltRT ,deltMZ and Jdscore) 
+
+filter_method = 1
+
+#advanced filtering parameter
+#this binsize defines the size of bin used to perform Target Decoy
+binsize = 2000
+
+#this is the delta RT cutoff (absolute) that will be used to decide whether or not to use dmz for binning
+d_rt = 5 
+
+#this is the delta precuror mz (ppm absolute) that will be used to perform filtering. IF failed will go to score cutoff of jdscore
+d_mz = 2
+
+#Final resort to rescue any target based on direct jdscore cutoff
+jdscore = 0.8
+
+#pitfile from the latest database
+pitFile = /hpcf/authorized_apps/proteomics_apps/database/20200422/HUMAN/human_ft_mc2_c57_TMT_K229.pit
+
+#ID mapped to protein file obtained during library generation/merging L_ID_mapped_protein_peptides.txt
+
+id_protFile = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LibGen_Merging/MergeLibrary/L_ID_mapped_protein_peptides.txt
+
