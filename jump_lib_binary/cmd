@@ -1,0 +1,12 @@
+#make a test.py python sript that takes command line arguments and add them together
+test.py
+
+conda install -c conda-forge pyinstaller
+#pyinstaller test.py -n test
+#this will create the binary file inside the dist folder
+pyinstaller test.py --onefile
+#to run the wrapper or program
+dist/test 2 3
+
+
+
