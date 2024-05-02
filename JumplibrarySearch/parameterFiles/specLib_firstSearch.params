@@ -1,0 +1,105 @@
+[specLib]
+
+#---Preprocess parameters ----#####
+## 0 = disable; 1 = enable
+TMT_data = 1
+#
+## Static Modification  # TMT modification Nterm
+add_Nterm_peptide = 304.2071453
+#
+#
+
+#--- SPECTRAL LIBRARY GENERATION --- #########
+
+
+#output folder for spectral library
+#specLibFolder = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.2/Human_AD_TMT16_Merge_3rd
+
+#specLibFolder = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.2/Decoy_7_4Da/Human_AD_TMT16_Merge_Decoy_7_4Da
+
+#specLibFolder = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.3/HUMAN/Human_AD_TMT16_Merge_43rd
+
+specLibFolder = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.3/HUMAN/Human_AD_TMT16_Merge_21st
+
+
+
+######## --- SPECTRAL LIBRARY SEARCHING --- #####
+#path that contains ms2 files
+ms2_path = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/10_fractions_v2
+
+#to perform preprocessing too duringthe search
+mzxml_path = /home/spoudel1/RT_score_combined 
+
+exp_mzxml = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/mzXML/FTLD_Batch2_F50.mzXML
+
+#experimental ms2 file used for searching (this parameter could change later)
+exp_ms2 = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/SpecLibPreprocessing/FTLD_Batch2_F50.ms2
+
+#tolerance used for matching precursor m/z
+ms1_tol = 10
+
+#turn off or turn on top ion selection. Normally it is best to turn it on as the precuse target are selected. For null search, it might be better to turn it off
+# 1 = Turn on, 0 = Turn off
+top_ions_control = 0
+
+#number of top ions that should be present in library in order to proceed searching
+#there are 2 parts in this parameter. First is minimum number of top ions required out of second part (top ions searched) fpr example 1,3 means at least 1 topion out of 3 ions is required
+top_ions = 1,3
+
+#fragment/product ion tolerance
+ms2_tol = 10
+
+#rt_fdr is the bin size initial fdr that is used to compute final FDR ... 10 FDR might result in FDR = 1
+rt_fdr = 10
+
+#this gives the number of window we want to use on mz for normalization of intensity
+window_number = 1
+
+#binning width -- the binning is done to select top 10 ions within the bin .. here 100 mz is taken as binsize
+binsize = No
+
+#maximum fragment ions that are selected from raw spectrum for each bin
+top_ions_per_bin = 10
+
+#search result output folder
+#outputFolder = SearchResult_v2.2.0_refLib
+
+#scoring methods
+##"DP_Peng", "unweighted_entropy", "fidelity","bhattacharya_2","dot_product"
+##method = "fidelity"
+#
+method = normalized_dot_product
+
+#tmt = 1 means labeled else tmt = 0 for non labeled
+tmt = 1
+#selection of start and end scans to search. Default 0,0 means there is no such range
+start_end_scan_range = 0,0
+#
+
+####### --- DYNAMIC INTENSTIY TOLERANCE CONCEPT ---#####
+
+#Add the Dynamic Intensity correction or static tolerance correction for ms2 matching
+#If you choose Dynamic Intensity correction here than you will need the file generated from JUMP mass calibration program
+
+#If you choose static, you will have to put value in tol =; else keep the file for Dynamic intensity and tolerance generated from mass calibration program
+tolerance_type = Static
+
+
+dyn_tol_file = /Users/spoudel1/Desktop/JUMP_specLib/Program/finalProgram/massCalForSecondSearch/MasCalSecondSearch/SD_Intensity_LookUpTable.txt
+
+#tolerance for ms2 matching = fragment ion tolerance, If Dynamic is selected tolerance will be in SD for example tol = 3 for 3SD; if static is selected the tolerance will be in ppm for example tol = 10 for 10 ppm
+
+tol=10
+#this is for naming the library. This depends on type of data
+####1= tmt18_default, 2 = tmt11_default, 3= tmt18_pho, 4 = tmt11_pho, 5= tmt18_ub, 6 = tmt11_ub, 100 = labelfree_default, 1000 = silaclys_default
+libtype = 1
+
+#null search parameters
+#null searsch = 1 is perform null search, 0 = no null search
+null_search = 0
+#simulation mass in Dalton. This mass will be added to precursor mass to search
+sim_mass = 5
+
+#define the cores for search program
+n_cores = 8
+#

@@ -1,0 +1,67 @@
+[specLib]
+
+
+####### example pep.xml file that was generated from current search strategy. For example, if you used comet to search 100 raw files. Keep the full path of one pep.xml file (you don't need best file, any file will work)
+pepxml = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/a_input/pepXML/accepted_PSM.pepXML
+#
+#--- SPECTRAL LIBRARY GENERATION --- #########
+
+
+#output folder for spectral library
+specLibFolder = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/SpecLibPipeline/SpecLib_Final_0526
+
+
+######## --- SPECTRAL LIBRARY SEARCHING --- #####
+exp_mzxml = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/mzXML/FTLD_Batch2_F50.mzXML
+
+#experimental ms2 file used for searching (this parameter could change later)
+exp_ms2 = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/SpecLibPreprocessing/FTLD_Batch2_F50.ms2
+
+#tolerance used for matching precursor m/z
+ms1_tol = 10
+
+#number of top ions that should be present in library in order to proceed searching
+top_ions = 3
+
+#fragment/product ion tolerance
+ms2_tol = 10
+
+#rt_fdr is the bin size initial fdr that is used to compute final FDR ... 10 FDR might result in FDR = 1
+rt_fdr = 10
+
+#this gives the number of window we want to use on mz for normalization of intensity
+window_number = 1
+
+#binning width -- the binning is done to select top 10 ions within the bin .. here 100 mz is taken as binsize
+binsize = No
+
+#maximum fragment ions that are selected from raw spectrum for each bin
+top_ions_per_bin = 10
+
+#search result output folder
+outputFolder = /home/spoudel1/JUMP_lib_test
+
+#scoring methods
+##"DP_Peng", "unweighted_entropy", "fidelity","bhattacharya_2","dot_product"
+##method = "fidelity"
+#
+method = normalized_dot_product
+
+####### --- TARGET/DECOY and FILTERING --- ####
+#select FDR at psms level 1%,2% etc
+FDR = 1
+
+####### --- SPECTRAL LIBRARY SECOND SEARCHING ---- ######
+
+
+#Add the Dynamic Intensity correction or static tolerance correction for ms2 matching
+#If you choose Dynamic Intensity correction here than you will need the file generated from JUMP mass calibration program
+
+#If you choose static, you will have to put value in tol =; else keep the file for Dynamic intensity and tolerance generated from mass calibration program
+tolerance_type = Static
+
+dyn_tol_file = /Users/spoudel1/Desktop/JUMP_specLib/Program/finalProgram/massCalForSecondSearch/MasCalSecondSearch/SD_Intensity_LookUpTable.txt
+
+#tolerance for ms2 matching = fragment ion tolerance, If Dynamic is selected tolerance will be in SD for example tol = 3 for 3SD; if static is selected the tolerance will be in ppm for example tol = 10 for 10 ppm
+
+tol=10
