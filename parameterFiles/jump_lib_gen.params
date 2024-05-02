@@ -1,0 +1,77 @@
+[specLib]
+
+######## --- SPECTRAL LIBRARY GENERATION --- #########
+
+#INPUT AND OUTPUT
+
+#filter result for library generation. This should be same as the input idtxt file used during mass calibration program
+jump_f_dyn = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.3/HUMAN/jump_f/Reference_human120/sum_HH_tmt16/ID.txt
+
+#all peptides file. In jump it is inside publications folder id_all_pep.txt. If id_all_pep = 0, it will automatically access publications folders in the path ID.txt was present,otherwise specify this file
+id_all_pep = 0
+
+#folder that contains mass calibration results
+#masscal_result =  /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.3/HUMAN/jump_f/mass_cal_human120
+#masscal_result = /home/spoudel1/spectral_library_manuscript/Manuscript_results/library_generation/preprocess_library/Reference_mass_Calibration/Results_15PPM
+masscal_result = /home/spoudel1/spectral_library_manuscript/Manuscript_results/library_generation/test_wrapper2/Results_15PPM
+#This is the path where your mzxml files are stored
+#mzxml_path = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.3/HUMAN/jump_f/mzxml_human120
+mzxml_path = /home/spoudel1/spectral_library_manuscript/Manuscript_results/library_generation/test_wrapper2
+#this file contains fractions. The fractions are ordered based on the overlap with the adjacent fractions. Make sure to have only one fraction per line. Dont use any header
+#orderedFraction = /research_jude/rgs01_jude/groups/penggrp/projects/Proteomics_Spectral_Lib/penggrp/step1_generate_library/LIBRARY/SpectralLibrary_TMT16_v0.0.3/HUMAN/jump_f/mzxml_human120/mzxml_list_human120.txt
+#orderedFraction = /home/spoudel1/spectral_library_manuscript/Updated_Ref_Library_1102/mzxml_list_human120_start_F64.txt
+orderedFraction = /home/spoudel1/spectral_library_manuscript/Manuscript_results/library_generation/test_wrapper2/mzxml_list_test.txt
+#test 2 fract
+#orderedFraction = /home/spoudel1/spectral_library_manuscript/Updated_Ref_Library_1102/test.txt
+#example pep.xml file that was generated from current search strategy. For example, if you used comet to search 100 raw files. Keep the full path of one pep.xml file (you don't need best file, any file will work)
+pepxml = /home/zyuan1/TMT16_SunHuan/Human_FTLD_Rosagrp/1s_1by1/FTLD_Batch2_F1/FTLD_Batch2_F1.1.pepXML
+
+#unimod modification information
+unimod_modPklFile = /home/spoudel1/bin/python/JUMPp-lib/consensusLibrary/unimod_modification.pickle
+
+#output folder for spectral library
+output_specLibFolder = Human_AD_TMT16_test
+
+
+#this is for naming the library. This depends on type of data
+###1= tmt18_default, 2 = tmt11_default, 3= tmt18_pho, 4 = tmt11_pho, 5= tmt18_ub, 6 = tmt11_ub, 100 = labelfree_default, 1000 = silaclys_default
+libtype = 1
+
+######## --- RT inference --- #########
+
+#eps is to perform the sliding window clustering for RT
+eps = 1
+
+#RT exracted lookup table Yes = 1, No = 0, If 1, it will look for the rtFile RT file consistting of each RT extracted file
+rtFile_extract = 0
+
+#If rtFile_extract = 1, that means you need to provide the file (pkl) that has RT RT extracted
+#rtFilePath_extract = /home/spoudel1/spectral_library_manuscript/Updated_Ref_Library_1102/Human_AD_TMT16_Reference_RT_fixed/intermediate/RT_all_fractions_after_inference.pkl
+
+rtFilePath_extract = /home/spoudel1/spectral_library_manuscript/Manuscript_results/library_generation/test_wrapper/Human_AD_TMT16_2frac_test/intermediate/RT_all_fractions_after_inference.pkl
+
+######## --- Library Generation parameters --- #########
+
+#top psms count used for building library
+topPsmCnt = 10
+
+#distance for decoy generation
+#default is +/-7 dalton +7 is used for even scans and -7 is used for odd scans
+#scans are fake as they corresponds peptide ID number
+distanceDecoy = 5
+
+#decoy_gen_method == 0 is precursor swap and 1 is precursor mass shift
+decoy_gen_method = 0
+
+#this is the .pkl file the JUMPp_library generation program generates and it is stored insided intermediate folder
+
+target_library = /home/spoudel1/spectral_library_manuscript/Manuscript_results/library_generation/ref_lib_120_Frac/Human_AD_TMT16_Reference/intermediate/jumplib_human_tmt18_default_target.pkl 
+
+#Library notes for example source of data, batch information etc
+##here is an example Reference. You can say DongGeun/Boer/Danting TMT16 experiments htmt_b301 batch
+libraryNotes = Reference Library from 120 fractions FTLD_Batch2
+
+#This is the cutoff used for improving the quality of library generation. This is the pattern matching score of all PSMS candidates (spectrum) with generated library
+Dscore_cutoff = 0.8
+
+

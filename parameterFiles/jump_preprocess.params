@@ -1,0 +1,31 @@
+[Preprocess]
+deisotoping_method = 2					# 0: directly read and write; 1: brute force; 2: pattern matching via entire envelope; 3: step-wise via adjacent peaks
+
+# parameters used by both brute force and top 1 for TMT
+precursor_ion_considered = 2			# N (1-4): go back to MS1, start from the strongest peak of top-N clusters in the isolation window
+charge_considered = 2,3,4,5				# a list of all charges to be considered
+monoisotopic_ion_shift = -2,-1,0,1,2	# a list of monoisotopic ion mass shift to be considered
+MS1_considered = -2,-1,1				# a list of MS1 scans to be considered, -1: MS1 immediate before the MS2; 1: MS1 immediate after the MS2; -2: the 2nd MS1 before the MS2
+
+# parameters used by top 1 for TMT
+number_TMT_tags = 0,1,2,3				# a list of TMT tags to be considered
+isotopic_pattern_cutoff = 10			# percentage threshold (relative to the strongest ion) that a theoretical ion to be considered
+max_num_ppi = 2							# 0 = disable; 1-10 = max precursor ions selected for mixed MS2 search
+percentage_ppi = 50						# minimal percentage of precursor peak intensity (ppi) when max_num_ppi = 0
+isolation_window = 1					# +/- (isolation_window)/2 based on MS2 isolation window (e.g. 1.6 m/z)
+isolation_window_offset = 0.2			# +/- isolation_window_offset based on MS2 isolation window offset (e.g. 0.25 m/z)
+isolation_window_variation = 0.2		# +/- isolation_window_variation based on MS2 isolation window offset (e.g. 0.25 m/z)
+interscanppm = 10						# mass tolerance for interscan precursor identification
+intrascanppm = 10						# mass tolerance for intrascan isotopic decharging
+delta_Dscore = 0.1						# threshold within which multiple precursors may be reported; delta_Dscore = (Dscore_max - Dscore_current) / Dscore_max
+TMT_data = 1							# 0 = disable; 1 = enable
+add_Nterm_peptide = 304.2071453			# TMT modification or other amine labeling (229.1629321 for TMT6-11, 304.2071453 for TMT16)
+#add_Nterm_peptide = 229.1629321			# TMT modification or other amine labeling (229.1629321 for TMT6-11, 304.2071453 for TMT16)
+
+output_format = 1						# output file format, 1: ms2, 2: dtas, 3: mgf
+simple_process = 1						# if 'deisotoping_method=1 or 2', 1: simple process with 2 steps; 2: complex process with 6 steps; if 'deisotoping_method=0', 1: charge +2; 2: charges +2, +3
+w_wo_calibration = 1					# mass correction, 1: only with calibration, 2: only without calibration, else: both with and without calibration
+nprocessor = 4							# no of multiprocessing nodes
+parallel_method = 1						# parallel method, 1: multiprocessing package (if HPC, apply an interactive node: bsub -R "rusage[mem=200G]" -q standard -P Proteomics -Is -n 4 -R "span[hosts=1]" bash), 2: submitting LSF jobs
+
+# for DIA (only for future)
