@@ -1,0 +1,38 @@
+Step 1.
+
+First create a folder called MassCal where you want to perform mass calibration
+
+cd /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/prototype
+mkdir MassCal
+cd MassCal
+cp /home/spoudel1/bin/python/SpectralLibrary/specLib.params .
+
+Step 2.
+
+Make changes in the parameter file
+
+jump_f_dyn (ID.txt file location)
+search_engine (jump)
+tmtReporters = TMT16
+resultsDirectory =  /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/prototype/MassCal (Mass calibration results)
+mzxml_path =  /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/prototype (this is the folder that contains subfolder where mzXML files are)
+pepxml = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/a_input/pepXML/accepted_PSM.pepXML (representative pepxml file to extract modification information .. can be any pep.xml file same batches that uses same parameters)
+
+
+specLibFolder = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/prototype/SpecLib/ (spectral library results)
+
+Step 3.
+Run mass cal program
+
+module load jump
+
+python /home/spoudel1/bin/python/SpectralLibrary/MassCal/mainProgramServer.py specLib.params
+
+Step 4.
+
+On the same folder run initiate the interactive mode
+bsub -P proteomics -q large_mem -R "rusage[mem=50000]" -Is bash
+
+python /home/spoudel1/bin/python/SpectralLibrary/consensusLibrary_RT_Final.py specLib.params
+
+ 

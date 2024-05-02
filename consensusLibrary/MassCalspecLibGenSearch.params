@@ -1,0 +1,104 @@
+[specLib]
+
+######## --- MASS CALIBRATION PARAMETERS --- #########
+
+#this is the path where pep.xml to .tsv file is converted in the folder .. for example comet search txt files ... mainly for PTMs
+#if filter_ID parameter is No , this path should be specified.
+file_path_dyn = /Users/spoudel1/Desktop/JUMP_localizationProgram/JUMPl_phosphoValidate/Jump_l_Phospho_w010
+
+
+#filter result following searching. This is is Yes if we have jump_f_dyn as ID.txt, else No. If this is No than you need to have search txt files path specified in file_path_dyn
+filter_ID = Yes
+
+#ID.txt input for training set extraction. If additional dataset is not specified below, this dataset will be used for training and testing
+jump_f_dyn = /Users/spoudel1/Desktop/JUMP_specLib/Program/sum_jumpf/ID.txt
+
+
+#ID.txt input from jump filter result (could be PTM or same as above train set data) 
+#additional test data. This is required for example if you do PTM searches on whole proteome where whole proteome ID will be used for training and this dataset will be used for testing. If no additional dataset is used please specify this parameter as None 
+jump_f_dyn_test = None
+#jump_f_dyn_test = /Users/spoudel1/Desktop/JUMP_localization_v2/sum_group_w010/ID.txt         
+
+#Decoy
+#jump_f_dyn = /Users/spoudel1/Downloads/w010.txt
+
+#This is to specify xcorr value for training dataset. If comet is specified Xcorr > 2.5 or jump is specified Jscore value > than 40 is taken as default for training set
+
+search_engine = comet
+
+#type to tmt ions TMT6 TMT8 TMT10 TMT11 TMT16
+tmtReporters = TMT16
+
+#Loess correction or binning
+#1) Loess ---- very time consuming 2) binning -----  pretty quick
+mz_correction = binning  
+
+#number of ions per bin
+ionNo_perBin = 500
+
+#total number of iterations to determine the relationship of SD with intensity # 3 was found optimal in our dataset
+no_of_iterations = 3
+
+#You can control the standard deviation value for iterations. Usually 3 is preferred
+SDunits = 3
+
+#folder to keep new results
+resultsDirectory =  /Users/spoudel1/Desktop/JUMP_specLib/Program/finalProgram/JUMPp-lib/MassCalResults
+#specify the ion types for training the dataset for mass calibration
+ion_type_train = a,b,y
+
+#specify the ion types for testing the dataset for mass calibration
+ion_type_test = a,b,y
+
+#specify the neutral ion loss for testing the dataset
+ion_loss_test = NH3,H2O
+
+#This is the path where your mzxml files are stored
+mzxml_path = /Users/spoudel1/Desktop/TMT16_massCalibration
+
+#example pep.xml file that was generated from current search strategy. For example, if you used comet to search 100 raw files. Keep the full path of one pep.xml file (you don't need best file, any file will work)
+pepxml = /Users/spoudel1/Desktop/TMT16_massCalibration/accepted_PSM.pepXML
+
+######## --- SPECTRAL LIBRARY GENERATION --- #########
+
+#unimod modification information
+unimod_modPklFile = unimod_modification.pickle
+
+#output folder for spectral library
+specLibFolder = /Users/spoudel1/Desktop/JUMP_specLib/Program/finalProgram/specLib
+
+#distance for decoy generation
+#default is +/-7 dalton +7 is used for even scans and -7 is used for odd scans
+#scans are fake as they corresponds peptide ID number
+distanceDecoy = 7
+
+
+######## --- SPECTRAL LIBRARY SEARCHING --- #####
+
+#experimental ms2 file used for searching (this parameter could change later)
+exp_ms2 = /Users/spoudel1/Desktop/JUMP_specLib/Program/ms2/preprocess/FTLD_Batch2_F50.ms2
+
+#tolerance used for matching precursor m/z
+ms1_tol = 10 
+
+#number of top ions that should be present in library in order to proceed searching
+top_ions = 3
+
+#fragment/product ion tolerance
+ms2_tol = 10
+
+#binning width -- the binning is done to select top 10 ions within the bin .. here 100 mz is taken as binsize
+binsize = 100 
+
+#maximum fragment ions that are selected from raw spectrum for each bin
+top_ions_per_bin = 10
+
+#search result output folder
+outputFolder = /Users/spoudel1/Desktop/JUMP_specLib/Program/finalProgram/SearchResults
+
+####### --- TARGET/DECOY and FILTERING --- ####
+#select FDR at psms level 1%,2% etc
+FDR = 1
+
+####### --- SPECTRAL LIBRARY SECOND SEARCHING ---- ######
+

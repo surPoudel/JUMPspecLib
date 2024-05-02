@@ -1,0 +1,60 @@
+[specLib]
+
+######## --- MASS CALIBRATION PARAMETERS --- #########
+
+#ID.txt input for training set extraction. If additional dataset is not specified below, this dataset will be used for training and testing
+jump_f_dyn = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/jump_f/ID.txt
+
+
+#folder to keep new results
+resultsDirectory =  /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/SpecLibPipeline/FinalMassCal
+
+
+#This is the path where your mzxml files are stored
+mzxml_path = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/mzXML
+
+#this file contains fractions. The fractions are ordered based on the overlap with the adjancent fractions. Make sure to have only one fraction per line. Dont use any header
+orderedFraction = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/SpecLib/mzxml_list.txt
+
+#example pep.xml file that was generated from current search strategy. For example, if you used comet to search 100 raw files. Keep the full path of one pep.xml file (you don't need best file, any file will work)
+pepxml = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/a_input/pepXML/accepted_PSM.pepXML
+
+
+######## --- SPECTRAL LIBRARY GENERATION --- #########
+
+#unimod modification information
+unimod_modPklFile = /home/spoudel1/bin/python/JUMPp-lib/consensusLibrary/unimod_modification.pickle
+
+#RT lookup table Yes = 1, No = 0, If 1, it will look for the rtFile RT file consistting of each RT and average RT, else it will create it
+rtFile = 1 
+
+#If rtFile = 1, that means you need to provide the file that has RT RT file path
+rtFilePath = /research/projects/penggrp/Proteomics_Spectral_Lib/penggrp/step1_generate_library/all_fractions_human/SpecLib_RTCsv/RT_all_fractions.csv
+
+#top psms count used for building library
+topPsmCnt = 5
+
+
+#output folder for spectral library
+specLibFolder = SpecLib_Final_0526
+
+#distance for decoy generation
+#default is +/-7 dalton +7 is used for even scans and -7 is used for odd scans
+#scans are fake as they corresponds peptide ID number
+distanceDecoy = 7
+
+#Library notes for example source of data, batch information etc
+#here is an example Reference. You can say DongGeun/Boer/Danting TMT16 experiments htmt_b301 batch
+libraryNotes = Reference
+
+######## --- SPECTRAL LIBRARY MERGING --- #########
+# please change following parameters from spectral library generation part
+# specLibFolder (new folder for updated library), distanceDecoy (usually keep it 7)
+#keep the full path of reference library
+refLib = SpecLib_Final_0526/Spectral_Library_theo_mz_exp_intensity.spLib
+
+#keep the full path of new libary that is going to be merged
+newLib = SpecLib/Spectral_Library_theo_mz_exp_intensity.spLib
+
+#output folder name where reference library is going to be updated
+
