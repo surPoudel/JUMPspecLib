@@ -1,0 +1,11 @@
+original script location. Below scripts are just copy pasted in current location
+
+# search
+#python /home/spoudel1/bin/python/Developments/JumplibrarySearchParallel_TwoScores_revised/librarySearchMain.py specLib_firstSearch.params
+# python /home/spoudel1/bin/python/JUMPp-lib/JumplibrarySearch/librarySearchMain.py specLib_firstSearch.params
+
+# filter
+# python /home/spoudel1/bin/python/Developments/JumplibraryFilter_v4/Jump_lib_filter_2modes.py specLib_filterRAPID.params
+
+# quantification
+# python /home/spoudel1/bin/python/JUMPp-lib/JumplibraryQuan/jump_lib_quan_v0.1.0.py jump_lib_q.params
