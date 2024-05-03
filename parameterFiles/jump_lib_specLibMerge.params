@@ -1,0 +1,9 @@
+[specLib]
+refLib = /home/user1/jumplibrary/Human_AD_TMT11_L001/intermediate/jumplib_human_tmt11_default_target.splib
+newLib = /home/user1/jumplibrary/Human_AD_TMT11_L002/intermediate/jumplib_human_tmt11_default_target.splib
+ref_ppmlfile = /home/user1/jumplibrary/Human_AD_TMT11_L001/intermediate/id_all_pep.ppml
+new_ppmlfile = /home/user1/jumplibrary/Human_AD_TMT11_L002/intermediate/id_all_pep.ppml
+output_specLibFolder = Human_AD_TMT11_merge_1
+distanceDecoy = 8
+libtype = 2
+decoy_gen_method = 1
