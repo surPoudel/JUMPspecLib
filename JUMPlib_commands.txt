@@ -1,0 +1,9 @@
+jump_lib -pp jump_lib_preprocess.params *.mzXML
+jump_lib -d jump_lib_gen.params
+jump_lib -d_merge jump_lib_specLibMerge.params
+
+jump_lib -pp jump_preprocess.params *.mzXML
+jump_lib -s jumplib_search.params
+jump_lib -pp_s jumplib_search.params
+jump_lib -f jumplib_filter.params
+jump_lib -q jump_lib_q.params
