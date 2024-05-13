@@ -61,6 +61,7 @@ that JUMPlib does not support out-of-place installs; the JUMPlib git
 repository _is_ the entire installation.  
 
 [Top of page](#JUMPlib)
+
 ----
 
 ## JUMPlib Commands ##
