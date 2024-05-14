@@ -108,18 +108,17 @@ jump_lib -q jump_lib_q.params
 
 ----
 
+
+## JUMPlib ##
+#### Download [database](https://drive.google.com/file/d/1wIzRg3dC6fkEVhWwWJFfst8HwnMx8Jcn)
+
+
+[Top of page](#JUMPlib)
+
 ## Test Data Exercise ##
 
-1. Make a directory called **Test**
-2. Copy mzXML files from [sample_data](./sample_data) to **Test**
-3. Copy --------- from [parameterFiles](./parameterFiles) to **Test**
-4. Open the parameter file copied from step # 3 and change the following information
-    * write the changes here
-    #### Download [database](https://drive.google.com/drive/folders/1RMV537_0cBQER5BoP3GWRMR9HWC9MwDl?usp=sharing)
-    * pitfile = replace the path with the folder that has the sample pitfile name for eg. /home/spoudel1/JUMP-ptm/resources/database/humanComprehensive_v1_ft_mc2_c57_TMT_K229.pit 
-    #### Download [pitfile](https://drive.google.com/drive/folders/1RMV537_0cBQER5BoP3GWRMR9HWC9MwDl?usp=sharing)
-
-    #### Download test database and pitfile here [database_pitfile](https://drive.google.com/drive/folders/1RMV537_0cBQER5BoP3GWRMR9HWC9MwDl?usp=sharing)
+* Parameter files [parameterFiles](./parameterFiles)
+* Example datasets along with commands for library generation, library merging, library search, library filter and library quantification are in [sample_data](https://drive.google.com/file/d/1wIzRg3dC6fkEVhWwWJFfst8HwnMx8Jcn) #zuo-fei replace this will correct link
 
 
 [Top of page](#JUMPlib)
