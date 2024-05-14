@@ -112,12 +112,21 @@ jump_lib -q jump_lib_q.params
 #### Download [database and test data along with code/scripts](https://drive.google.com/file/d/1wIzRg3dC6fkEVhWwWJFfst8HwnMx8Jcn)
 * This will download test_jumplib.zip
 #### Libraries
-* Unzip the file [test_jumplib\test_jumplib\spectral_libraries]
+* Unzip the file
+  ```
+  test_jumplib\test_jumplib\spectral_libraries
+  ```
 * Contains TMT11 and TMT18 Human brain libraries
-### Test Data 
-* Go to [test_jumplib\test_jumplib\example_data]
+#### Test Data 
+* Go to
+  ```
+  test_jumplib\test_jumplib\example_data
+  ```
 * This folder contains a sample mzXML file along with parameter files required for search, filter and quantification
-* It also has a script to wrap all at once [run_jumplib.sh]
+* It also has a script to wrap all at once
+  ```
+  bash run_jumplib.sh
+  ```
 
 [Top of page](#JUMPlib)
 
